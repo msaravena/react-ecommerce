@@ -11,9 +11,9 @@ const  NavBar = () => {
             <Container style={{display: 'flex', justifyContent:'space-between'}}>
                 <Navbar.Brand as={ Link } to="/">Products App</Navbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link as={ Link } to="/login"><i class='bx bx-user'></i></Nav.Link>
-                    <Nav.Link as={ Link } to="/purchases"><i class='bx bx-archive'></i></Nav.Link>
-                    <Nav.Link href='#'><i class='bx bx-cart-alt'></i></Nav.Link>
+                    <Nav.Link as={ Link } to="/login"><i className='bx bx-user'></i></Nav.Link>
+                    <Nav.Link as={ Link } to="/purchases"><i className='bx bx-archive'></i></Nav.Link>
+                    <Nav.Link href='#'><i className='bx bx-cart-alt'></i></Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
