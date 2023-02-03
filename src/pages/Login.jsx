@@ -51,8 +51,9 @@ const logout = () => {
           {
             isLogged
             ?
-            <Card style={{maxWidth: 500, margin: "3rem auto", padding:"2rem" }}>
-                <Button onClick={logout}>Cerrar sesión</Button>
+            <Card style={{maxWidth: 500, margin: "3rem auto", padding:"2rem" }} className="logout-card">
+                <i class='bx bx-user' ></i>
+                <Button onClick={logout}>Logout</Button>
             </Card>
             :          
             <Card style={{maxWidth: 500, margin: "3rem auto", padding:"2rem" }}>

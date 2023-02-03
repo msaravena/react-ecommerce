@@ -120,9 +120,20 @@ li {
     justify-content: space-between;
 }
 
-nav {
-    background-color: #00ffb9;
+.logout-card{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
 }
 
+.logout-card i {
+    font-size: 45px;
+    color: #78c2ad;
+}
 
-
+.logout-card .btn {
+    width: 100%;
+}
