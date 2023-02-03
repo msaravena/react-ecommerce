@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { Row, Col, Button, Card } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 import axios from "axios"
+import { addFavoriteThunk } from "../store/slices/favorites.slice"
 
 const  Home = () => {
 
@@ -22,10 +23,14 @@ const  Home = () => {
 
     }, [])
 
+   
+
+    
+
     return (
 
         <div>
-            <h1>Home</h1>
+            
 
             {
                 categories.map( category => (
@@ -40,28 +45,38 @@ const  Home = () => {
             }
             <Button
             onClick={() => dispatch(getProductsThunk())}>
-                Ver todos</Button>
+                All Products</Button>
 
             <Row xs={1} xm={2} lg={3}>
                 {
                     products?.map(productItem => (
 
-                        <Col key={productItem.id}>
-                            <Card className="products-card">
-                                <Card.Img 
-                                variant="top" 
-                                src={productItem.productImgs[0]} 
-                                style={{height: 200, objectFit: 'contain', padding:20}} 
-                                />
+                        <Col key={productItem.id} className="col-products">
+                            
+                            <Card className="products-card" 
+                                as={ Link } 
+                                to={`/products/${productItem.id}`}
+                                style={{textDecoration: 'none', color:'inherit'}}
+                                >
+                                <div className="img-wrapper">
+                                    <Card.Img 
+                                    variant="top cover-img" 
+                                    src={productItem.productImgs[0]} 
+                                    style={{height: 200, objectFit: 'contain', padding:20}}                                 
+                                    />
+                                    <Card.Img 
+                                    variant="top btm-img" 
+                                    src={productItem.productImgs[1]} 
+                                    style={{height: 200, objectFit: 'contain', padding:20}}                                 
+                                    />
+                                </div>
                                 <Card.Body style={{borderTop:"1px solid lightGrey" }}>
                                     <Card.Title>{productItem.title}</Card.Title>
                                     <Card.Text style={{display: 'flex', justifyContent: 'space-between', marginTop: 30}}>
                                     <span>${productItem.price}</span>                                     
-                                    <Button 
+                                    <Button                                 
                                     variant="primary" 
-                                    className="home-btn"
-                                    as={ Link } 
-                                    to={`/products/${productItem.id}`}
+                                    className="home-btn"                                    
                                     style={{height: 35, width: 35, borderRadius: '50%', display: 'flex', justifyContent:'center', alignItems: 'center'}}>
                                         <i className='bx bx-cart-alt' ></i></Button>
                                     </Card.Text>
