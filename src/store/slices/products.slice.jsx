@@ -19,18 +19,30 @@ export const getProductsThunk = () => (dispatch) => {
             
         axios
         .get("https://e-commerce-api.academlo.tech/api/v1/products")
-        .then((resp) => dispatch(setProducts(resp.data.data.products)))
+        .then((resp) => {
+            console.log(resp.data.data.products)
+            dispatch(setProducts(resp.data.data.products))})
         .catch(error => console.error(error))
         .finally(() => dispatch(setIsLoading(false)));
 }
 
 export const filterCategoriesThunk = (id) => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios
-        .get(`https://e-commerce-api.academlo.tech/api/v1/products?category=${id}`)
+    axios
+        .get(`https://e-commerce-api.academlo.tech/api/v1/products/?category=${id}`)
         .then((resp) => dispatch(setProducts(resp.data.data.products)))
         .catch(error => console.error(error))
         .finally(() => dispatch(setIsLoading(false)));
+}
+
+export const filterByTermThunk = (term) => (dispatch) => {
+    dispatch(setIsLoading(true));
+    
+    axios
+    .get(`https://e-commerce-api.academlo.tech/api/v1/products?query=${term}`)
+    .then((resp) => dispatch(setProducts(resp.data.data.products)))
+    .catch(error => console.error(error))
+    .finally(() => dispatch(setIsLoading(false)))
 }
 
 export const { setProducts } = ProductsSlice.actions;

@@ -1,16 +1,17 @@
 import { useSelector, useDispatch } from "react-redux"
-import { getProductsThunk, filterCategoriesThunk } from "../store/slices/products.slice"
+import { getProductsThunk, filterCategoriesThunk, filterByTermThunk } from "../store/slices/products.slice"
 import { useEffect, useState } from "react"
-import { Row, Col, Button, Card } from 'react-bootstrap'
+import { Row, Col, Button, Card, InputGroup, Form } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 import axios from "axios"
-import { addFavoriteThunk } from "../store/slices/favorites.slice"
+
 
 const  Home = () => {
 
     const dispatch = useDispatch()
     const products = useSelector(state => state.products)
     const [ categories, setCategories ] = useState([])
+    const [ searchValue, setSearchValue ] = useState("")
 
     useEffect( () => {
 
@@ -23,7 +24,10 @@ const  Home = () => {
 
     }, [])
 
-   
+    const filterByTerm = () =>  {
+       
+        dispatch(filterByTermThunk(searchValue))
+    }
 
     
 
@@ -46,6 +50,28 @@ const  Home = () => {
             <Button
             onClick={() => dispatch(getProductsThunk())}>
                 All Products</Button>
+
+                <Row>
+                    <Col>
+                        <InputGroup className="my-3">
+                    
+                                <Form.Control
+                                placeholder="Search here for a product"
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                                value={searchValue}
+                                onChange={(e) => setSearchValue(e.target.value)}
+                                />
+                                <InputGroup.Text 
+                                id="basic-addon1"
+                                as={Button}
+                                onClick={filterByTerm}
+                                ><i className='bx bx-search'></i></InputGroup.Text>
+                        </InputGroup>
+                    </Col>
+                </Row>
+
+            
 
             <Row xs={1} xm={2} lg={3}>
                 {

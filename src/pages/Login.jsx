@@ -35,11 +35,26 @@ const  Login = () => {
         })   
     }
 
+const [ isLogged, setIsLogged ] = useState(localStorage.getItem("token"))
+
+const logout = () => {
+
+    localStorage.clear()
+    setIsLogged(false)
+}
+
     return (
 
 
         <div>
-  
+
+          {
+            isLogged
+            ?
+            <Card style={{maxWidth: 500, margin: "3rem auto", padding:"2rem" }}>
+                <Button onClick={logout}>Cerrar sesión</Button>
+            </Card>
+            :          
             <Card style={{maxWidth: 500, margin: "3rem auto", padding:"2rem" }}>
                 <h1>Login</h1>
                 <Form onSubmit={ (e) => {handleSubmit(e)} } >
@@ -67,6 +82,9 @@ const  Login = () => {
                     </Button>
                 </Form>
             </Card>
+           
+           }
+
             <AlertError
             isVisible={ alert }
             dismiss={ () => setAlert(false) }

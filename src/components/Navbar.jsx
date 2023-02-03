@@ -32,7 +32,7 @@ const  NavBar = () => {
                     <Nav  style={{marginLeft: "auto"}}>
                         <div className="nav-items">
                             <Nav.Link as={ Link } to="/login"><i className='bx bx-user'></i></Nav.Link>
-                            <Nav.Link as={ Link } to="/purchases"><i className='bx bx-archive'></i></Nav.Link>
+                            <Nav.Link as={ Link } to="/purchases"><i className='bx bx-store-alt' ></i></Nav.Link>
                             <Nav.Link onClick={handleShow}><i className='bx bx-cart-alt'></i></Nav.Link>
                         </div>
                     </Nav>
