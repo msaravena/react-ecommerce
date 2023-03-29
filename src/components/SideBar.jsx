@@ -12,8 +12,8 @@ const  SideBar = ({ show, handleClose }) => {
     useEffect( () => {
 
         axios
-        .get("https://e-commerce-api.academlo.tech/api/v1/cart", getConfig())
-        .then(resp =>setFavorites(resp.data.data.cart.products))
+        .get("https://ecommerce-api-v6d7.onrender.com/carts", getConfig())
+        .then(resp =>setFavorites(resp.data))
         .catch(error => console.error(error))
 
     }, [show])
@@ -22,7 +22,7 @@ const  SideBar = ({ show, handleClose }) => {
 
         axios
         .post(
-            "https://e-commerce-api.academlo.tech/api/v1/purchases", 
+            "https://ecommerce-api-v6d7.onrender.com/purchases", 
             {
                 "street": "Green St. 1456",
                 "colony": "Southwest",

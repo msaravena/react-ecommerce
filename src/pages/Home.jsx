@@ -18,8 +18,8 @@ const  Home = () => {
         dispatch( getProductsThunk())
 
         axios
-        .get("https://e-commerce-api.academlo.tech/api/v1/products/categories")
-        .then( resp => setCategories(resp.data.data.categories))
+        .get("https://ecommerce-api-v6d7.onrender.com/categories")
+        .then( resp => setCategories(resp.data))
         .catch(error => console.error(error))
 
     }, [])

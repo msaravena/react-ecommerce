@@ -10,8 +10,8 @@ const Purchases  = () => {
     useEffect( () => {
 
         axios
-        .get("https://e-commerce-api.academlo.tech/api/v1/purchases", getConfig())
-        .then( resp => setPurchases(resp.data.data.purchases))
+        .get("https://ecommerce-api-v6d7.onrender.com/purchases", getConfig())
+        .then( resp => setPurchases(resp.data))
         .catch(error => console.error(error))
 
     }, [])

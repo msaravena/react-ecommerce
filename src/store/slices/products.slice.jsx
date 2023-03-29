@@ -18,10 +18,10 @@ export const getProductsThunk = () => (dispatch) => {
         dispatch(setIsLoading(true))
             
         axios
-        .get("https://e-commerce-api.academlo.tech/api/v1/products")
+        .get("https://ecommerce-api-v6d7.onrender.com/products")
         .then((resp) => {
-            console.log(resp.data.data.products)
-            dispatch(setProducts(resp.data.data.products))})
+            console.log(resp.data)
+            dispatch(setProducts(resp.data))})
         .catch(error => console.error(error))
         .finally(() => dispatch(setIsLoading(false)));
 }
@@ -29,8 +29,8 @@ export const getProductsThunk = () => (dispatch) => {
 export const filterCategoriesThunk = (id) => (dispatch) => {
     dispatch(setIsLoading(true));
     axios
-        .get(`https://e-commerce-api.academlo.tech/api/v1/products/?category=${id}`)
-        .then((resp) => dispatch(setProducts(resp.data.data.products)))
+        .get(`https://ecommerce-api-v6d7.onrender.com/products/?category=${id}`)
+        .then((resp) => dispatch(setProducts(resp.data)))
         .catch(error => console.error(error))
         .finally(() => dispatch(setIsLoading(false)));
 }
@@ -39,8 +39,8 @@ export const filterByTermThunk = (term) => (dispatch) => {
     dispatch(setIsLoading(true));
     
     axios
-    .get(`https://e-commerce-api.academlo.tech/api/v1/products?query=${term}`)
-    .then((resp) => dispatch(setProducts(resp.data.data.products)))
+    .get(`https://ecommerce-api-v6d7.onrender.com/products?query=${term}`)
+    .then((resp) => dispatch(setProducts(resp.data)))
     .catch(error => console.error(error))
     .finally(() => dispatch(setIsLoading(false)))
 }
