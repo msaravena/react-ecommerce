@@ -17,20 +17,20 @@ export const getFavoritesThunk = () => dispatch => {
     dispatch(setIsLoading(true))
 
     axios
-    .get("https://ecommerce-api-v6d7.onrender.com/carts", getConfig())
+    .get("https://e-commerce-api.academlo.tech/api/v1/cart", getConfig())
     .then(resp => {
         console.log(resp)
-        dispatch(setFavorites(resp.data))
+        dispatch(setFavorites(resp.data.data))
     
     })
-    .catch(error => console.error(error))
-    .finally( () => dispatch(setIsLoading(false)))
+    .catch(error => console.error(error)).
+    finally( () => dispatch(setIsLoading(false)))
 }
 
 export const addFavoriteThunk = (product) => (dispatch) => {
     dispatch(setIsLoading(true));
         axios
-        .post("https://ecommerce-api-v6d7.onrender.com/carts", product, getConfig())
+        .post("https://e-commerce-api.academlo.tech/api/v1/cart", product, getConfig())
         .then((resp) => dispatch(getFavoritesThunk()))
         .catch(error => console.error(error))
         .finally(() => dispatch(setIsLoading(false)));
