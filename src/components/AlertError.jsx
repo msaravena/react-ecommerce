@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
+
 
 function AlertError( {isVisible, dismiss} ) {
   const [show, setShow] = useState(isVisible);

@@ -26,16 +26,21 @@ const  NavBar = () => {
     return (
         <>
 
-            <Navbar bg="primary" variant="dark">
+            <Navbar bg="primary" variant="dark" expand="sm">
                 <Container >
                     <Navbar.Brand as={ Link } to="/">Products App</Navbar.Brand>
-                    <Nav  style={{marginLeft: "auto"}}>
-                        <div className="nav-items">
-                            <Nav.Link as={ Link } to="/login"><i className='bx bx-user'></i></Nav.Link>
-                            <Nav.Link as={ Link } to="/purchases"><i className='bx bx-store-alt' ></i></Nav.Link>
-                            <Nav.Link onClick={handleShow}><i className='bx bx-cart-alt'></i></Nav.Link>
-                        </div>
-                    </Nav>
+                    <Navbar.Toggle/>
+                    <Navbar.Collapse>
+                        <Nav  style={{marginLeft: "auto"}}>
+                            <div className="nav-items">
+                                <Nav.Link as={ Link } to="/login"><i className='bx bx-user'></i></Nav.Link>
+                                <Nav.Link as={ Link } to="/purchases"><i className='bx bx-store-alt' ></i></Nav.Link>
+                                <Nav.Link onClick={handleShow}><i className='bx bx-cart-alt'></i></Nav.Link>
+                            </div>
+                        </Nav>
+                    </Navbar.Collapse>
+                    
+
                 </Container>
             </Navbar>
             <SideBar
